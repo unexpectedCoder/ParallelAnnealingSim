@@ -5,13 +5,11 @@
 #include <QMutex>
 #include <QThread>
 
-#include <vector>
-
 #include "annealing.h"
 
 
-typedef std::vector<Result> Results;
-typedef std::vector<Result>::const_iterator ResultsItr_c;
+typedef QVector<Result> Results;
+typedef QVector<Result>::const_iterator ResultsItr_c;
 
 
 class Optimizer : public QObject
@@ -19,7 +17,7 @@ class Optimizer : public QObject
   Q_OBJECT
 
 public:
-  explicit Optimizer(double (*f)(const Vals&), int dim, const Bounds &bnds, const Options &opt,
+  explicit Optimizer(double (*f)(const Vals&), size_t dim, const Bounds &bnds, const Options &opt,
                      int threads_num, QObject *parent = nullptr);
   ~Optimizer();
 

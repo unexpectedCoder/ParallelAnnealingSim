@@ -90,7 +90,6 @@ void Annealing::anneal()
     }
     else
     {
-      gsl_rng_set(gsl_r, clock());
       if (gsl_rng_uniform(gsl_r) < exp(-(E_new - E) / T))
       {
         E = E_new;
@@ -112,7 +111,7 @@ void Annealing::printResult() const
   {
     cout << " - minimum of function: " << result.extr << '\n'
          << " - optimal values:\n";
-    for (size_t i = 0; i < result.xOpt.size(); ++i)
+    for (int i = 0; i < result.xOpt.size(); ++i)
       cout << "\tx" << i + 1 << ":\t" << result.xOpt[i] << '\n';
     cout << " - iterations: " << result.iters << '\n';
   }
@@ -142,7 +141,7 @@ void Annealing::reduceTemp()
 }
 
 
-double Annealing::genNewState(size_t i)
+double Annealing::genNewState(int i)
 {
   gsl_rng_set(gsl_r, clock());
   double res = gsl_ran_gaussian(gsl_r, T) + s[i];

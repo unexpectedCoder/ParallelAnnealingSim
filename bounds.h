@@ -8,9 +8,9 @@ struct Bounds
 {
   // Saves boundaries of target function arguments.
   double *bmin, *bmax;		// Minimum and maximum values
-  int dim;								// Dimension of target function
+  size_t dim;             // Dimension of target function
 
-  Bounds(const double *bmin, const double *bmax, int dim);
+  Bounds(const double *bmin, const double *bmax, size_t dim);
   Bounds(const Bounds &b);
   ~Bounds();
 

@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
   cout << "Optimization using simulated annealing.\nBMSTU, 2020\n\n";
 
   // Target function (space) dimension
-  int dim = 0;
+  size_t dim = 0;
   while (true)
   {
     cout << "Enter target function dimension: "; cin >> dim;
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
   double *xmin = new double[dim];
   double *xmax = new double[dim];
   cout << "Enter values boundaries:\n";
-  for (int i = 0; i < dim; ++i)
+  for (size_t i = 0; i < dim; ++i)
   {
     while (true)
     {

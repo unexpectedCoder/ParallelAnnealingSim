@@ -1,8 +1,5 @@
 #include "optimizer.h"
 
-#include <QByteArray>
-#include <QFile>
-
 #include <iostream>
 #include <fstream>
 
@@ -10,7 +7,7 @@
 using namespace std;
 
 
-Optimizer::Optimizer(double (*f)(const Vals&), int dim, const Bounds &bnds, const Options &opt,
+Optimizer::Optimizer(double (*f)(const Vals&), size_t dim, const Bounds &bnds, const Options &opt,
                      int threads_num, QObject *parent)
   : QObject(parent)
 {

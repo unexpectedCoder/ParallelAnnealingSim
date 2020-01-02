@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Bounds::Bounds(const double *bmin, const double *bmax, int dim)
+Bounds::Bounds(const double *bmin, const double *bmax, size_t dim)
 {
   this->bmin = nullptr;
   this->bmax = nullptr;
@@ -12,10 +12,10 @@ Bounds::Bounds(const double *bmin, const double *bmax, int dim)
   if (dim > 0)
   {
     this->dim = dim;
-
     this->bmin = new double[this->dim];
     this->bmax = new double[this->dim];
-    for (int i = 0; i < this->dim; ++i)
+
+    for (size_t i = 0; i < this->dim; ++i)
     {
       if (bmax[i] < bmin[i])
         throw "Error in <Bounds>: maximum of value must be > minimum of value!";
@@ -32,7 +32,7 @@ Bounds::Bounds(const Bounds &b)
   dim = b.dim;
   bmin = new double[dim];
   bmax = new double[dim];
-  for (int i = 0; i < dim; ++i)
+  for (size_t i = 0; i < dim; ++i)
   {
     bmin[i] = b.bmin[i];
     bmax[i] = b.bmax[i];
@@ -61,7 +61,7 @@ ostream& operator<<(ostream &os, const Bounds &b)
 {
   os << "BOUNDS\n";
   os << " - dimension: " << b.dim << '\n';
-  for (int i = 0; i < b.dim; ++i)
+  for (size_t i = 0; i < b.dim; ++i)
     os << " - x" << i + 1 << ": (" << b.bmin[i] << "; " << b.bmax[i] << ")\n";
   return os;
 }

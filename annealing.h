@@ -3,9 +3,9 @@
 
 #include <QObject>
 #include <QMutex>
+#include <QVector>
 
 #include <iostream>
-#include <vector>
 #include <gsl/gsl_rng.h>
 #include <gsl/gsl_randist.h>
 
@@ -31,7 +31,7 @@ private:						// Functions
   void formStartState();
   void toNewState(const Vals &new_s);
   void reduceTemp();
-  double genNewState(size_t i);
+  double genNewState(int i);
   bool isChangeState(double dE, double t);
 
   void formResult();
@@ -44,7 +44,7 @@ private:						// Variables
   const gsl_rng_type *gsl_T;
   gsl_rng *gsl_r;
   // Vars
-  int dim;								// Target function dimension
+  int dim;                // Target function dimension
   int iteration;					// Iteration number
   double T;								// Current temperature
   Vals s;									// Current state
